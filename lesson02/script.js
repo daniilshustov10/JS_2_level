@@ -35,17 +35,12 @@ class GoodsList {
         document.querySelector('.goods-list').innerHTML = listHtml;    
     }
     
-    sumGoods() {
-       let summaOfGoods = 0;
-       this.goods.forEach((good) => {
-           summaOfGoods += good.price;
-       });
-       return summaOfGoods;
+    sumGoods() {    
+        const summaOfGoods = this.goods.reduce((accumulator, good) => {
+           return accumulator + good.price;
+        }, 0);
 
-    //  хотел реализовать через reduce, но не получилось. Выводит undefined. Пытался разобраться, но не понял, в чем ошибка       
-    //    this.goods.reduce((accumulator, good) => {
-    //        return accumulator + good.price;
-    //    }, 0);
+        return summaOfGoods;
     }
 }
 
