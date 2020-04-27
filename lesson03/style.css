@@ -7,6 +7,10 @@ html, body {
     padding: 0;
 }
 
+button {
+    outline: none;
+}
+
 .menu {
     padding: 10px 120px;
     background-color: darkslategray;
@@ -52,7 +56,7 @@ html, body {
     cursor: pointer;
 }
 
-.goods-list {
+.goods-list, .basket-list {
     padding: 60px 120px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -79,7 +83,7 @@ html, body {
     margin-bottom: 10px;
 }
 
-.add__good {
+.add__good, .remove__good {
     border: none;
     text-align: right;
     padding: 3px 10px;
@@ -89,8 +93,12 @@ html, body {
     border-radius: 10px;
 }
 
-.add__good:hover {
+.add__good:hover, .remove__good:hover {
     background: #ccc;
     color: black;
     cursor: pointer;
+}
+
+.head {
+    margin-left: 25%;
 }
