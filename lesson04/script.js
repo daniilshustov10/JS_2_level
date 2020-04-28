@@ -27,7 +27,7 @@ function validatePhoneNumber() {
 
 function validateEmail() {
     const value = document.querySelector('#email').value;
-    if (!/\+7\(\d{3}\)\d{3}-\d{4}/.test(value)) {
+    if (!/^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z])+$/.test(value)) {
         document.querySelector('#email').classList.add('redBorder');
         document.querySelector('#email').value = 'mymail@mail.ru / my.mail@mail.ru / my-mail@mail.ru';
     }
