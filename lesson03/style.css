@@ -1,0 +1,104 @@
+html, body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    outline: none;
+}
+
+.menu {
+    padding: 10px 120px;
+    background-color: darkslategray;
+}
+
+.menu ul{
+    display: flex;
+    list-style-type: none;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.menu ul li a:hover {
+    color: gold;
+}
+
+.menu ul li:not(:last-child) {
+    margin-right: 40px;
+}
+
+.basket {
+    padding: 12px 70px;
+    border-bottom: 1px solid darkslategray;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cart-button {
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: white;
+    background: darkslategray;
+    border: none;
+}
+
+.cart-button:hover {
+    background: #ccc;
+    color: black;
+    cursor: pointer;
+}
+
+.goods-list, .basket-list {
+    padding: 60px 120px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 30px;
+}
+
+.goods-item {
+    background: rgb(234,233,233);
+    padding: 20px 40px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.good__image {  
+    height: 110px;
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.goods-item h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.add__good, .remove__good {
+    border: none;
+    text-align: right;
+    padding: 3px 10px;
+    margin-top: 10px;
+    background: darkslategray;
+    color: white;
+    border-radius: 10px;
+}
+
+.add__good:hover, .remove__good:hover {
+    background: #ccc;
+    color: black;
+    cursor: pointer;
+}
+
+.head {
+    margin-left: 25%;
+}
