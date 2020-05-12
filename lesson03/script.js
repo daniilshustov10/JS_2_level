@@ -44,6 +44,7 @@ const API_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-sto
 class GoodsList {
     constructor() {
         this.goods = [];
+        this.filteredGoods = [];
     }   
 
     fetchGoods() {
@@ -52,6 +53,7 @@ class GoodsList {
                 .then((goods) => {
                     JSON.parse(goods).forEach((good) => {
                         this.goods.push(new GoodsItem(good.id_product, good.product_name, good.price));
+                        this.filteredGoods.push(new GoodsItem(good.id_product, good.product_name, good.price));
                     })
                     resolve();
                 })
@@ -68,13 +70,23 @@ class GoodsList {
             })
     }
 
+    filterGoods(value) {
+        const regexp = new RegExp(value, 'i');
+        this.filteredGoods = this.goods.filter(good => regexp.test(good.product_name));
+        this.render();
+        addToBasket();
+    }
+    
+
     render() {
         let listHtml = '';
-        this.goods.forEach(good => {                    
+        this.filteredGoods.forEach(good => {                    
             listHtml += good.render();                  
         });                
         document.querySelector('.goods-list').innerHTML = listHtml;  
     }
+
+
     
     sumGoods() {
             const summaOfGoods = this.goods.reduce((accumulator, good) => {
@@ -97,7 +109,7 @@ class BasketItem extends GoodsItem {
     }
     
     removeFromBasket() {
-        basketList.basket.splice(this,1);
+        basketList.basket.splice(basketList.basket.indexOf(this),1);
     }
 }
 
@@ -115,8 +127,13 @@ class BasketList {
             });
 
             const heading = `<h3>Товары, добавленные в корзину:</h3>`;
-            document.querySelector('.head').innerHTML = heading;
+            document.querySelector('.head').innerHTML = heading;  
             document.querySelector('.basket-list').innerHTML = listHtml;
+
+            if (this.basket.length == 0) { 
+                document.querySelector('.head').innerHTML = '';
+            }       
+           
             resolve();
         });       
     } 
@@ -161,7 +178,10 @@ function removeFromBasket() {
 
 document.querySelector('.cart-button').addEventListener('click', () => basketList.render().then(() => {removeFromBasket()}));
 
-
+document.querySelector('.search-button').addEventListener('click', (e) => {
+    let value = document.querySelector('.goods-search').value;
+    list.filterGoods(value);
+  });
 
 
 

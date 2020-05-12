@@ -111,6 +111,6 @@ button {
 }
 
 .head {
-    margin-left: 25%;
+    grid-column: 1/5;
 }
 
