@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>eShop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div class="menu">
+          <ul>
+              <li><a href="">Главная</a></li>
+              <li><a href="">Каталог</a></li>
+              <li><a href="">Контакты</a></li>
+          </ul>
+      </div>
+      <div class="basket">
+          <input type="text" class="goods-search" v-model="searchLine" />
+          <button class="search-button" type = "button" @click = "filterGoods">Искать</button>
+          <button class="cart-button" type="button" @click = "renderBasketList">Корзина</button>
+      </div>
+    </header>
+    <main>   
+
+      <div class="goods-list">
+        <div class="goods-item" v-for = "product in filteredGoods">
+          <div class = "good__image"></div>   
+          <h3> {{ product.product_name }} </h3>
+          <p> {{ product.price }} </p>
+          <button class="add__good" v-bind:id = "product.id_product" type="button" @click="addToBasket">Добавить</button>
+        </div> 
+      </div>     
+        
+
+        <div class="basket-list">
+
+          <div v-if = "basket.length == 0">
+            <h2>Нет товаров в корзине</h2>
+          </div> 
+          
+          <div class="head" v-if="basket.length != 0">
+            <h2>Товары, добавленные в корзину</h2>
+          </div>
+
+          <div class="head" v-if="basket.length != 0">
+            <h2>Сумма товаров в корзине: {{ summaOfGoods }} </h2>
+          </div>
+        
+
+          <div class="goods-item" v-for = "product in basket">
+            <div class = "good__image"></div>   
+            <h3> {{ product.product_name }} </h3>
+            <p> {{ product.price }} </p>
+            <button class="remove__good" v-bind:id = "product.id_product" type="button" @click = "removeFromBasket">Удалить</button>
+          </div> 
+
+
+
+        </div>    
+
+    </div>
+
+  </main>
+</body>
+</html>
