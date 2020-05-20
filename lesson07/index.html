@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>eShop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <header-menu></header-menu>
+      <div class="basket">
+          <search></search>
+          <button class="cart-button" type="button" @click = "renderBasketList">Корзина</button>
+      </div>
+    </header>
+    <main>   
+      <goods-list :goods="filteredGoods"></goods-list>
+      <basket-list :goods="basket" ></basket-list>
+    </main>
+</body>
+</html>
